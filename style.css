@@ -81,6 +81,8 @@ tr td:last-child {
 }
 
 .horizontal-line {
+  display: flex;
+  justify-content: center;
   width: 370px;
   height: 10px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -89,8 +91,16 @@ tr td:last-child {
   transition: transform 225ms ease-in-out;
 }
 
-.vertical {
-  transform: rotate(90deg) scaleX(0);
+.vertical-line {
+  display: flex;
+  align-items: center;
+  width: 10px;
+  height: 370px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 15px;
+  transform: scaleY(0);
+  transition: transform 225ms ease-in-out;
 }
 
 .gameOver {
@@ -98,20 +108,43 @@ tr td:last-child {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 999;
-  animation: zoomIn 225ms ease-in-out;
+  height: 100vh;
+  z-index: 2;
+
+  animation: myAnim 1s ease 0s 1 normal forwards;
+
+  border-radius: 15% 15% 25% 30%, -15% -15% -25% -30%;
 }
 
-@keyframes zoomIn {
+.restart-btn {
+  position: absolute;
+  bottom: 180px;
+  z-index: 3;
+  padding: 25px 75px;
+  font-size: 35px;
+  border: 1px solid white;
+  background-color: #1c0b7f;
+  color: white;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+  cursor: pointer;
+}
+
+.restart-btn:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255);
+}
+
+@keyframes myAnim {
   0% {
-    opacity: 0;
-    transform: scale(0);
+    transform: scale(2);
   }
-  80% {
-    opacity: 1;
+
+  100% {
     transform: scale(1);
   }
-  100% {
-    transform: scale(1.1);
-  }
+}
+
+.container-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
